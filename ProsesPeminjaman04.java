@@ -1,6 +1,4 @@
 public class ProsesPeminjaman04 {
-    // SEKARANG TANPA STATIC
-    // Data ini akan dibuat setiap kali kita melakukan "new ProsesPeminjaman04()"
     public Mahasiswa04[] daftarMhs;
     public Buku04[] daftarBuku;
     public Peminjaman04[] dataPinjam;
