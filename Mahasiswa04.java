@@ -7,7 +7,7 @@ public class Mahasiswa04 {
         this.prodi = prodi;
     }
 
-    public void tampilMahasiswaCM1() {
+    public void tampilMahasiswa() {
         System.out.println("NIM: " + nim + " | Nama: " + nama + " | Prodi: " + prodi);
     }
 }

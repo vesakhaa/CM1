@@ -1,63 +1,83 @@
 public class ProsesPeminjaman04 {
+    // SEKARANG TANPA STATIC
+    // Data ini akan dibuat setiap kali kita melakukan "new ProsesPeminjaman04()"
+    public Mahasiswa04[] daftarMhs;
+    public Buku04[] daftarBuku;
+    public Peminjaman04[] dataPinjam;
 
-    // Implementasi Selection Sort - Denda Terbesar (Descending)
-    public void selectionSortDenda(Peminjaman04[] data) {
-        for (int i = 0; i < data.length - 1; i++) {
+
+    public ProsesPeminjaman04() {
+        // Data Mahasiswa
+        daftarMhs = new Mahasiswa04[] {
+            new Mahasiswa04("22001", "Andi", "TI"),
+            new Mahasiswa04("22002", "Budi", "TI"),
+            new Mahasiswa04("22003", "Citra", "SIB")
+        };
+
+        // Data Buku
+        daftarBuku = new Buku04[] {
+            new Buku04("B01", "Algoritma", 2020),
+            new Buku04("B02", "Basis Data", 2019),
+            new Buku04("B03", "Java OOP", 2021)
+        };
+
+        // Data Peminjaman
+        dataPinjam = new Peminjaman04[] {
+            new Peminjaman04(daftarMhs[0], daftarBuku[0], 7),
+            new Peminjaman04(daftarMhs[1], daftarBuku[1], 4),
+            new Peminjaman04(daftarMhs[2], daftarBuku[2], 10),
+            new Peminjaman04(daftarMhs[0], daftarBuku[2], 6)
+        };
+    }
+
+    public void selectionSortDenda() {
+        for (int i = 0; i < dataPinjam.length - 1; i++) {
             int maxIdx = i;
-            for (int j = i + 1; j < data.length; j++) {
-                if (data[j].denda > data[maxIdx].denda) {
+            for (int j = i + 1; j < dataPinjam.length; j++) {
+                if (dataPinjam[j].denda > dataPinjam[maxIdx].denda) {
                     maxIdx = j;
                 }
             }
-            Peminjaman04 temp = data[maxIdx];
-            data[maxIdx] = data[i];
-            data[i] = temp;
+            Peminjaman04 temp = dataPinjam[maxIdx];
+            dataPinjam[maxIdx] = dataPinjam[i];
+            dataPinjam[i] = temp;
         }
     }
 
-    // Implementasi Binary Search berdasarkan NIM
-    public void binarySearchNIM(Peminjaman04[] data, String cariNim) {
-        // Sort NIM terlebih dahulu (syarat Binary Search) menggunakan Selection Sort
-        for (int i = 0; i < data.length - 1; i++) {
+    // Method searching (Tanpa Static)
+    public void binarySearchNIM(String cariNim) {
+        // selection sort berdasarkan NIM ASC
+        for (int i = 0; i < dataPinjam.length - 1; i++) {
             int minIdx = i;
-            for (int j = i + 1; j < data.length; j++) {
-                if (data[j].mhs.nim.compareTo(data[minIdx].mhs.nim) < 0) {
+            for (int j = i + 1; j < dataPinjam.length; j++) {
+                if (dataPinjam[j].mhs.nim.compareTo(dataPinjam[minIdx].mhs.nim) < 0) {
                     minIdx = j;
                 }
             }
-            Peminjaman04 temp = data[minIdx];
-            data[minIdx] = data[i];
-            data[i] = temp;
+            Peminjaman04 temp = dataPinjam[minIdx];
+            dataPinjam[minIdx] = dataPinjam[i];
+            dataPinjam[i] = temp;
         }
 
-        int low = 0, high = data.length - 1;
+        // Binary Search
+        int left = 0, right = dataPinjam.length - 1;
         boolean ditemukan = false;
 
-        while (low <= high) {
-            int mid = (low + high) / 2;
-            int res = cariNim.compareTo(data[mid].mhs.nim);
-
-            if (res == 0) {
-                // Cari ke kiri dan kanan untuk menangani NIM yang sama (pinjam > 1 buku)
-                cetakSemuaHasil(data, mid, cariNim);
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if (dataPinjam[mid].mhs.nim.equals(cariNim)) {
+                System.out.println("Data ditemukan:");
+                dataPinjam[mid].tampilPeminjaman();
                 ditemukan = true;
                 break;
-            } else if (res > 0) low = mid + 1;
-            else high = mid - 1;
+            } else if (dataPinjam[mid].mhs.nim.compareTo(cariNim) < 0) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
         }
-        if (!ditemukan) System.out.println("Data NIM " + cariNim + " tidak ditemukan.");
-    }
-
-    private void cetakSemuaHasil(Peminjaman04[] data, int mid, String nim) {
-        int left = mid;
-        while (left >= 0 && data[left].mhs.nim.equals(nim)) {
-            data[left].tampilPeminjaman();
-            left--;
-        }
-        int right = mid + 1;
-        while (right < data.length && data[right].mhs.nim.equals(nim)) {
-            data[right].tampilPeminjaman();
-            right++;
+        if (!ditemukan) {
+            System.out.println("Data dengan NIM " + cariNim + " tidak ditemukan.");
         }
     }
 }
