@@ -9,8 +9,12 @@ public class Main04 {
         int pilih;
         do {
             System.out.println("\n=== SISTEM PEMINJAMAN RUANG BACA JTI ===");
-            System.out.println("1. Tampilkan Mahasiswa\n2. Tampilkan Buku\n3. Tampilkan Peminjaman");
-            System.out.println("4. Urutkan Denda Terbesar\n5. Cari Berdasarkan NIM\n0. Keluar");
+            System.out.println("1. Tampilkan Mahasiswa");
+            System.out.println("2. Tampilkan Buku");
+            System.out.println("3. Tampilkan Peminjaman");
+            System.out.println("4. Urutkan Denda Terbesar");
+            System.out.println("5. Cari Berdasarkan NIM");
+            System.out.println("0. Keluar");
             System.out.print("Pilih Menu: ");
             pilih = sc.nextInt();
 
