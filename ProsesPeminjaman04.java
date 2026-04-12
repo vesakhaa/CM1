@@ -9,23 +9,23 @@ public class ProsesPeminjaman04 {
     public ProsesPeminjaman04() {
         // Data Mahasiswa
         daftarMhs = new Mahasiswa04[] {
-            new Mahasiswa04("22001", "Andi", "TI"),
-            new Mahasiswa04("22002", "Budi", "TI"),
-            new Mahasiswa04("22003", "Citra", "SIB")
+            new Mahasiswa04("22001", "Andi", "Teknik Informatika"),
+            new Mahasiswa04("22002", "Budi", "Teknik Informatika"),
+            new Mahasiswa04("22003", "Citra", "Sistem Informasi Bisnis")
         };
 
         // Data Buku
         daftarBuku = new Buku04[] {
-            new Buku04("B01", "Algoritma", 2020),
-            new Buku04("B02", "Basis Data", 2019),
-            new Buku04("B03", "Pemrograman", 2021),
-            new Buku04("B04", "Fisika", 2024)
+            new Buku04("B001", "Algoritma", 2020),
+            new Buku04("B002", "Basis Data", 2019),
+            new Buku04("B003", "Pemrograman", 2021),
+            new Buku04("B004", "Fisika", 2024)
         };
 
         // Data Peminjaman
         dataPinjam = new Peminjaman04[] {
             new Peminjaman04(daftarMhs[0], daftarBuku[0], 7),
-            new Peminjaman04(daftarMhs[1], daftarBuku[1], 4),
+            new Peminjaman04(daftarMhs[1], daftarBuku[1], 3),
             new Peminjaman04(daftarMhs[2], daftarBuku[2], 10),
             new Peminjaman04(daftarMhs[2], daftarBuku[3], 6),
             new Peminjaman04(daftarMhs[0], daftarBuku[1], 4)

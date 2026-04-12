@@ -8,7 +8,7 @@ public class Main04 {
         
         int pilih;
         do {
-            System.out.println("\n=== SISTEM RUANG BACA 04 (NON-STATIC) ===");
+            System.out.println("\n=== SISTEM PEMINJAMAN RUANG BACA JTI ===");
             System.out.println("1. Tampilkan Mahasiswa\n2. Tampilkan Buku\n3. Tampilkan Peminjaman");
             System.out.println("4. Urutkan Denda Terbesar\n5. Cari Berdasarkan NIM\n0. Keluar");
             System.out.print("Pilih Menu: ");
