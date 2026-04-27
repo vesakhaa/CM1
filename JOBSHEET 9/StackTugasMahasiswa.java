@@ -1,4 +1,6 @@
+
 public class StackTugasMahasiswa {
+
     Mahasiswa04[] stack;
     int top;
     int size;
@@ -10,7 +12,7 @@ public class StackTugasMahasiswa {
     }
 
     public boolean isFull() {
-        if(top == size - 1) {
+        if (top == size - 1) {
             return true;
         } else {
             return false;
@@ -18,7 +20,7 @@ public class StackTugasMahasiswa {
     }
 
     public boolean isEmpty() {
-        if(top == -1) {
+        if (top == -1) {
             return true;
         } else {
             return false;
@@ -26,7 +28,7 @@ public class StackTugasMahasiswa {
     }
 
     void push(Mahasiswa04 mhs) {
-        if(!isFull()) {
+        if (!isFull()) {
             top++;
             stack[top] = mhs;
         } else {
@@ -35,7 +37,7 @@ public class StackTugasMahasiswa {
     }
 
     public Mahasiswa04 pop() {
-        if(!isEmpty()) {
+        if (!isEmpty()) {
             Mahasiswa04 m = stack[top];
             top--;
             return m;
@@ -46,7 +48,7 @@ public class StackTugasMahasiswa {
     }
 
     public Mahasiswa04 peek() {
-        if(!isEmpty()) {
+        if (!isEmpty()) {
             return stack[top];
         } else {
             System.out.println("Stack Kosong! Tidak ada tugas yang dikumpulkan");
@@ -54,11 +56,22 @@ public class StackTugasMahasiswa {
         }
     }
 
-    void print(){
-        for(int i = 0; i <= top; i++) {
-            System.out.println(stack[i].Nama + "\t" + stack[i].NIM + "\t " + stack[i].Kelas );
+    public void print() {
+        for (int i = top; i >= 0; i--) {
+            System.out.println(stack[i].Nama + "\t" + stack[i].NIM + "\t" + stack[i].Kelas);
         }
-        System.out.println("");
+    }
+
+    public void lihatTugasTerbawah() {
+        if (!isEmpty()) {
+            System.out.println("Tugas pertama dikumpulkan oleh: " + stack[0].Nama);
+        } else {
+            System.out.println("Stack kosong!");
+        }
+    }
+
+    public int hitungTugas() {
+        return top + 1; 
     }
 
     public String konversiDesimalKeBiner(int Nilai) {
@@ -66,10 +79,10 @@ public class StackTugasMahasiswa {
         while (Nilai > 0) {
             int sisa = Nilai % 2;
             stack.push(sisa);
-            Nilai = Nilai /2;
+            Nilai = Nilai / 2;
         }
         String biner = new String();
-        while (!stack.isEmpty()){
+        while (!stack.isEmpty()) {
             biner += stack.pop();
         }
 
