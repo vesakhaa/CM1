@@ -68,4 +68,17 @@ public class doubleLinkedList04 {
         }
         System.out.println();
     }
+
+    public void printReverse() {
+        if (isEmpty()) {
+        System.out.println("Linked List Masih Kosong");
+        return;
+    }
+        node04 current = tail; 
+        while (current != null) {
+            current.data.tampil();
+            current = current.prev; 
+    }
+    System.out.println();
+}
 }
