@@ -73,12 +73,12 @@ public class doubleLinkedList04 {
         if (isEmpty()) {
         System.out.println("Linked List Masih Kosong");
         return;
-    }
+        }
         node04 current = tail; 
         while (current != null) {
             current.data.tampil();
             current = current.prev; 
-    }
-    System.out.println();
+        }
+        System.out.println();
 }
 }
