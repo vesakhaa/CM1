@@ -47,6 +47,7 @@ public class doubleLinkedList04 {
         if(current == tail) {
             newNode.prev = current;
             current.next = newNode;
+            tail = newNode;
         }else{
             newNode.prev = current;
             newNode.next = current.next;
@@ -80,5 +81,39 @@ public class doubleLinkedList04 {
             current = current.prev; 
         }
         System.out.println();
-}
+    }
+
+    public void removeFirst() {
+        if (isEmpty()) {
+            System.out.println("Linked List Kosong");
+            return;
+        }
+
+        System.out.println("Data berhasil dihapus:");
+        head.data.tampil();
+
+        if (head == tail) {
+            head = tail = null;
+        } else {
+            head = head.next;
+            head.prev = null;
+        }
+    }
+
+    public void removeLast() {
+        if (isEmpty()) {
+            System.out.println("Linked List Kosong");
+            return;
+        }
+
+        System.out.println("Data berhasil dihapus:");
+        tail.data.tampil();
+
+        if (head == tail) {
+            head = tail = null;
+        } else {
+            tail = tail.prev;
+            tail.next = null;
+        }
+    }
 }
